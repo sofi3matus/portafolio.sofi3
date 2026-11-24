@@ -283,21 +283,42 @@ figure.is-missing::after {
 .about::before { height: calc(1508 * var(--u)); }
 
 .hero__list {
+  position: absolute;
+  left: calc(160 * var(--u));
+  top: calc(250 * var(--u));
+  width: calc(500 * var(--u));          /* columna izquierda: el centro queda libre para la imagen */
   list-style: none;
   margin: 0; padding: 0;
   font-size: max(18px, calc(34 * var(--u)));
   letter-spacing: -0.06em;
 }
-.hero__list li { position: absolute; }
-.hero__list li:nth-child(1) { left: calc(220 * var(--u)); top: calc(262 * var(--u)); }
-.hero__list li:nth-child(2) { left: calc(577 * var(--u)); top: calc(329 * var(--u)); }
-.hero__list li:nth-child(3) { left: calc(980 * var(--u)); top: calc(402 * var(--u)); }
-.hero__list span { margin-right: .45em; letter-spacing: 0; }
-.hero__list a {
-  display: inline-block;
-  transition: transform .35s cubic-bezier(.3, 1.8, .5, 1);
+.hero__list li {
+  position: relative;
+  padding-top: calc(14 * var(--u));
+  padding-bottom: calc(10 * var(--u));
+  border-bottom: 1px solid var(--grey);    /* línea fina de lado a lado, como un índice */
+  transition: border-color .3s;
 }
-.hero__list a:hover { transform: translateX(8px) rotate(-3deg); }
+.hero__list li:hover { border-bottom-color: var(--ink); }
+/* conserva la escalera de antes, pero amarrada por los puntos */
+.hero__list li:nth-child(2) { padding-left: calc(45 * var(--u)); }
+.hero__list li:nth-child(3) { padding-left: calc(90 * var(--u)); }
+.hero__list a { display: flex; align-items: baseline; gap: .35em; }
+.hero__num { letter-spacing: 0; }
+.hero__name { display: inline-block; white-space: nowrap; transition: transform .35s cubic-bezier(.3, 1.8, .5, 1); }
+.hero__dots { flex: 1; min-width: 1.2em; }   /* espacio que empuja la palabra a la derecha */
+.hero__meta {
+  /* nota al margen tipo catálogo de galería: misma Blink, chica, en mayúsculas y muy espaciada */
+  font-family: var(--sans);
+  font-size: max(10px, calc(14 * var(--u)));
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  color: var(--grey-text);
+  white-space: nowrap;
+  transition: color .3s, letter-spacing .4s;
+}
+.hero__list a:hover .hero__name { transform: translateX(8px) rotate(-3deg); }
+.hero__list a:hover .hero__meta { color: var(--ink); letter-spacing: .36em; }
 
 .braille {
   position: absolute;
@@ -561,29 +582,33 @@ figure.is-missing::after {
 }
 
 /* vista previa del proyecto al pasar por la lista */
-.hero__list a { position: relative; }
-.hero__list li:hover { z-index: 30; }   /* la vista previa queda sobre los otros proyectos */
 .hero__list a:hover { color: rgba(0, 0, 0, .5); }
-.hero__preview {
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  width: calc(240 * var(--u));
-  min-width: 140px;
-  height: auto;
-  margin-left: calc(24 * var(--u));
-  background: var(--bg);
+.hero__list a:hover .hero__meta { color: var(--ink); }
+
+/* vista previa fija al centro de la pantalla (como un índice que se asoma), mismo ancho para todas */
+.hero__view {
+  position: fixed;
+  left: 50%;
+  top: min(50vh, calc(600 * var(--u)));   /* centro de la pantalla; en pantallas muy altas no baja hasta la firma */
+  z-index: 40;
+  width: max(150px, calc(280 * var(--u)));
+  margin: 0;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(-50%) rotate(-6deg) scale(.6);
-  transform-origin: left center;
-  transition: opacity .25s, transform .45s cubic-bezier(.3, 1.8, .5, 1);
-  z-index: 10;
+  translate: -50% -50%;
+  transform: rotate(-4deg) scale(.86);
+  transition: opacity .25s, transform .5s cubic-bezier(.3, 1.8, .5, 1);
 }
-.hero__list a:hover .hero__preview {
-  opacity: 1;
-  transform: translateY(-50%) rotate(3deg) scale(1);
+.hero__view img { display: block; width: 100%; height: auto; max-height: 62vh; object-fit: cover; background: var(--bg); }
+.hero__cap {
+  display: block;
+  margin-top: 10px;
+  font-family: "Proggy", monospace;
+  font-size: max(12px, calc(17 * var(--u)));
+  text-align: center;
+  letter-spacing: 0;
 }
+.hero__view.is-on { opacity: 1; transform: rotate(2deg) scale(1); }
 
 /* sobre mí: texto bajo cada imagen al pasar el mouse */
 .about__img figcaption {
@@ -606,7 +631,7 @@ figure.is-missing::after {
 @media (hover: none) {                             /* en celular se ven siempre */
   .about__img figcaption { position: static; opacity: 1; translate: none; margin-top: 8px; width: auto; max-width: none; }
   .about__img--keys figcaption { margin-top: -18%; }   /* la foto del llavero trae blanco abajo */
-  .hero__preview { display: none; }
+  .hero__view { display: none; }
 }
 
 /* =========================================================
@@ -841,11 +866,11 @@ figure.is-missing::after {
     translate: -50% 0;
   }
 
-  .hero__list { font-size: calc(42 * var(--m)); }
-  .hero__list li { left: 50% !important; translate: -50% 0; white-space: nowrap; }
-  .hero__list li:nth-child(1) { top: calc(820 * var(--m)); }
-  .hero__list li:nth-child(2) { top: calc(1010 * var(--m)); }
-  .hero__list li:nth-child(3) { top: calc(1200 * var(--m)); }
+  .hero__list { left: 50%; translate: -50% 0; top: calc(900 * var(--m)); width: calc(380 * var(--m)); font-size: calc(32 * var(--m)); }
+  .hero__list li { padding-top: calc(22 * var(--m)); padding-bottom: calc(12 * var(--m)); }
+  .hero__list li:nth-child(2) { padding-left: calc(14 * var(--m)); }
+  .hero__list li:nth-child(3) { padding-left: calc(28 * var(--m)); }
+  .hero__meta { font-size: max(10px, calc(12 * var(--m))); }
 
   .hero .signature {
     position: absolute;

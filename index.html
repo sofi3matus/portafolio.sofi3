@@ -22,11 +22,15 @@
         <a class="logo" href="index.html" aria-label="sof.me, inicio">sof.me</a>
       </header>
 
+      <!-- índice de proyectos: como un índice de libro, con puntos que unen el título con lo que es -->
       <ol class="hero__list">
-        <li><a href="ewu.html"><span>1.</span>ewu ginger<img class="hero__preview" src="img/hover-ewu.jpg" data-fallback="img/ewu-elementos.png" alt="" aria-hidden="true"></a></li>
-        <li><a href="between-ends.html"><span>2.</span>between ends<img class="hero__preview" src="img/hover-between-ends.png" data-fallback="img/be-home.png" alt="" aria-hidden="true"></a></li>
-        <li><a href="familiario.html"><span>3.</span>familiario<img class="hero__preview" src="img/familiario-panel.jpg" alt="" aria-hidden="true"></a></li>
+        <li><a href="ewu.html" data-preview="img/hover-ewu.jpg"><span class="hero__num">1.</span><span class="hero__name">ewu ginger</span><span class="hero__dots" aria-hidden="true"></span><span class="hero__meta">branding</span></a></li>
+        <li><a href="between-ends.html" data-preview="img/hover-between-ends.png"><span class="hero__num">2.</span><span class="hero__name">between ends</span><span class="hero__dots" aria-hidden="true"></span><span class="hero__meta">sitio web</span></a></li>
+        <li><a href="familiario.html" data-preview="img/familiario-panel.jpg"><span class="hero__num">3.</span><span class="hero__name">familiario</span><span class="hero__dots" aria-hidden="true"></span><span class="hero__meta">juego</span></a></li>
       </ol>
+
+      <!-- vista previa: queda fija al centro de la pantalla, todas del mismo ancho -->
+      <div class="hero__view" aria-hidden="true"><img src="img/hover-ewu.jpg" alt=""><span class="hero__cap"></span></div>
 
       <!-- Arte braille: al pasar el mouse se transforma en el segundo dibujo -->
       <pre class="braille braille--left" aria-hidden="true"></pre>

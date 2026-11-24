@@ -290,6 +290,21 @@
     else img.addEventListener("error", useFallback, { once: true });
   });
 
+  /* ---------- 4b. VISTA PREVIA FIJA AL CENTRO (portada) ---------- */
+  const vista = document.querySelector(".hero__view");
+  if (vista && finePointer) {
+    const vImg = vista.querySelector("img"), vCap = vista.querySelector(".hero__cap");
+    document.querySelectorAll(".hero__list a[data-preview]").forEach((a) => {
+      new Image().src = a.dataset.preview;                      // precarga, así aparece al tiro
+      a.addEventListener("pointerenter", () => {
+        vImg.src = a.dataset.preview;
+        vCap.textContent = `⭒ ${a.querySelector(".hero__name").textContent} ⭒`;
+        vista.classList.add("is-on");
+      });
+      a.addEventListener("pointerleave", () => vista.classList.remove("is-on"));
+    });
+  }
+
   /* ---------- 5. PORTADAS QUE REBOTAN (between ends) ---------- */
   // Misma idea que en tu sitio: cada portada rebota en los bordes como el logo del DVD.
   const coverBox = document.querySelector(".be__covers");
