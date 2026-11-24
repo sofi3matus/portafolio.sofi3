@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sof.me — concepto visual</title>
+  <meta name="description" content="sof.me es un concepto visual lleno de procesos, siendo esta una bitácora personal de proyectos de Sofíe Matus.">
+  <link rel="preload" href="fonts/BlinkMacSystemFont.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="icon" href="assets/espada-cursor.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sword" aria-hidden="true"><img src="assets/espada.png" alt=""></div>
+
+  <main>
+    <section class="page hero">
+      <header class="topbar">
+        <nav class="topbar__nav" aria-label="Principal">
+          <a href="sobre-mi.html">SOBRE MÍ</a>
+          <a href="mailto:sofia.matus1@mail.udp.cl">CONTACTO</a>
+        </nav>
+        <a class="logo" href="index.html" aria-label="sof.me, inicio">sof.me</a>
+      </header>
+
+      <ol class="hero__list">
+        <li><a href="ewu.html"><span>1.</span>ewu ginger<img class="hero__preview" src="img/hover-ewu.jpg" data-fallback="img/ewu-elementos.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="between-ends.html"><span>2.</span>between ends<img class="hero__preview" src="img/hover-between-ends.png" data-fallback="img/be-home.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="familiario.html"><span>3.</span>familiario<img class="hero__preview" src="img/familiario-panel.jpg" alt="" aria-hidden="true"></a></li>
+      </ol>
+
+      <!-- Arte braille: al pasar el mouse se transforma en el segundo dibujo -->
+      <pre class="braille braille--left" aria-hidden="true"></pre>
+      <pre class="braille braille--right" aria-hidden="true"></pre>
+
+      <a class="listen" href="https://open.spotify.com/playlist/3FNJq9FZgzpYKLD7PkDErb?si=8ce7f79ee0884869" target="_blank" rel="noopener">ESCUCHA MIENTRAS VES EL PORTAFOLIO &lt;3</a>
+
+      <p class="signature"><span class="signature__logo">sof.me</span><span class="star">⭒</span><span>concepto visual</span></p>
+
+      <!-- "hablemos :)" sólo en la portada: abre un correo -->
+      <a class="marquee marquee--link" href="mailto:sofia.matus1@mail.udp.cl" aria-label="hablemos: escríbeme un correo">
+        <div class="marquee__track" data-text="hablemos :)" aria-hidden="true"></div>
+      </a>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
