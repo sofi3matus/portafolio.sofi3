@@ -305,6 +305,35 @@
     });
   }
 
+  /* ---------- 4c. PILA 3D DE LA PLAYLIST (propuesta) ---------- */
+  // cada carta tiene su lugar en la pila (--p); cada tanto la de adelante se va al fondo
+  const pila = document.querySelector(".pila");
+  if (pila) {
+    const cartas = [...pila.querySelectorAll(".pila__carta")];
+    let orden = cartas.slice();
+    const ubicar = () => orden.forEach((c, i) => c.style.setProperty("--p", i));
+    ubicar();
+    if (!reduceMotion) {
+      let pausa = false;
+      pila.addEventListener("pointerenter", () => (pausa = true));
+      pila.addEventListener("pointerleave", () => (pausa = false));
+      setInterval(() => {
+        if (pausa || document.hidden) return;
+        const primera = orden[0];
+        primera.classList.add("is-saliendo");
+        setTimeout(() => {
+          // la que salió reaparece al fondo sin cruzar por delante de las demás
+          primera.style.transition = "none";
+          primera.classList.remove("is-saliendo");
+          orden = orden.slice(1).concat(primera);
+          ubicar();
+          void primera.offsetWidth;
+          primera.style.transition = "";
+        }, 520);
+      }, 2200);
+    }
+  }
+
   /* ---------- 5. PORTADAS QUE REBOTAN (between ends) ---------- */
   // Misma idea que en tu sitio: cada portada rebota en los bordes como el logo del DVD.
   const coverBox = document.querySelector(".be__covers");

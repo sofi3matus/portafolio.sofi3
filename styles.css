@@ -855,6 +855,42 @@ figure.is-missing::after {
   .about__img--card { left: calc(310 * var(--u)); }
 }
 
+/* ===== PROPUESTA PILA 3D (playlist) — borrar este bloque si no se queda ===== */
+.pila {
+  --carta: calc(86 * var(--u));
+  --paso-x: calc(27 * var(--u));      /* cuánto se corre cada carta hacia la derecha */
+  --paso-y: calc(-13 * var(--u));      /* y hacia arriba */
+  --paso-z: -46px;                     /* y hacia el fondo */
+  position: absolute;
+  left: calc(1410 * var(--u));
+  top: calc(785 * var(--u));
+  width: calc(320 * var(--u));
+  height: calc(170 * var(--u));
+  perspective: 900px;
+  perspective-origin: 0% 40%;
+}
+.pila__carta {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: var(--carta);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transform:
+    translate3d(calc(var(--p) * var(--paso-x)), calc(var(--p) * var(--paso-y)), calc(var(--p) * var(--paso-z)))
+    rotateY(-32deg);
+  opacity: calc(.86 - var(--p) * .06);
+  z-index: calc(20 - var(--p));
+  outline: 1px solid rgba(0, 0, 0, .12);
+  box-shadow: 0 10px 18px -12px rgba(0, 0, 0, .35);
+  transition: transform .9s cubic-bezier(.3, 1.25, .5, 1), opacity .9s;
+}
+.pila__carta img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* la que se va: sale hacia adelante y se desvanece */
+.pila__carta.is-saliendo { transform: translate3d(calc(-1 * var(--paso-x)), 30px, 80px) rotateY(-32deg); opacity: 0; transition-duration: .5s; }
+/* al pasar el cursor la pila se abre un poco, como en un fichero */
+.pila:hover { --paso-x: calc(36 * var(--u)); --paso-z: -60px; }
+/* ===== fin PILA 3D ===== */
+
 /* =========================================================
    CELULAR  (≤ 640px) — todo pasa a una columna
    ========================================================= */
@@ -890,6 +926,8 @@ figure.is-missing::after {
     transform-origin: center;
   }
   @keyframes wiggle { 0%, 100% { transform: translateX(-50%) rotate(0); } 50% { transform: translateX(-50%) rotate(-3deg) scale(1.03); } }
+
+  .pila { left: 50%; top: calc(690 * var(--m)); translate: -31% 0; width: calc(240 * var(--m)); height: calc(160 * var(--m)); --carta: calc(96 * var(--m)); --paso-x: calc(16 * var(--m)); --paso-y: calc(-8 * var(--m)); }
 
   /* un solo dibujo braille, al centro y más grande */
   .braille--right { display: none; }
