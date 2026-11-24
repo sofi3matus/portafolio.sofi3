@@ -415,6 +415,17 @@ figure.is-missing::after {
 /* =========================================================
    EWU GINGER
    ========================================================= */
+/* ficha de cada proyecto (igual en todas): qué es, con qué se hizo y su enlace */
+.project__ficha {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .6em 2.2em;
+  margin: calc(40 * var(--u)) auto 0;
+  font-size: max(10px, calc(14 * var(--u)));
+  text-transform: uppercase; letter-spacing: .28em;
+  color: var(--grey-text);
+}
+.project__tipo { color: var(--ink); }
+.project__ficha a { color: var(--ink); border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: letter-spacing .4s; }
+.project__ficha a:hover { letter-spacing: .36em; }
 .ewu .project__desc { width: calc(770 * var(--u)); }
 
 .ewu__row {
@@ -474,14 +485,17 @@ figure.is-missing::after {
   will-change: transform;
 }
 
+/* las tres pantallas del mismo ancho, alineadas arriba y con el mismo espacio entre ellas */
 .be__screens {
   display: flex;
+  justify-content: center;
   align-items: flex-start;
-  margin: calc(90 * var(--u)) 0 0 calc(163 * var(--u));
+  gap: calc(70 * var(--u));
+  margin: calc(90 * var(--u)) auto 0;
 }
-.be__home     { width: calc(377 * var(--u)); }
-.be__lineup   { width: calc(415 * var(--u)); margin-left: calc(79 * var(--u)); }
-.be__playlist { width: calc(415 * var(--u)); margin-left: calc(65 * var(--u)); margin-top: calc(20 * var(--u)); }
+.be__home,
+.be__lineup,
+.be__playlist { width: calc(400 * var(--u)); }
 .be__screens figure { transition: transform .45s cubic-bezier(.3, 1.8, .5, 1); }
 .be__screens figure:hover { transform: translateY(-8px) rotate(-1deg); }
 
@@ -516,7 +530,7 @@ figure.is-missing::after {
 .fam .project__desc { width: calc(505 * var(--u)); }
 
 /* versión actualizada del Figma: tablero más chico y bocetos juntos en fila */
-.fam__panel { width: calc(822 * var(--u)); margin: calc(110 * var(--u)) auto 0; }
+.fam__panel { width: calc(640 * var(--u)); margin: calc(110 * var(--u)) auto 0; }   /* más chico: deja que respiren las fotos */
 
 /* las dos fotos del tablero en exhibición, lado a lado (Figma 1728 × 2992) */
 .fam__fotos {
@@ -531,7 +545,23 @@ figure.is-missing::after {
 .fam__fotos figure:hover img { transform: scale(1.03); }
 
 
-.fam .project__desc--end { width: calc(647 * var(--u)); margin: calc(142 * var(--u)) auto calc(120 * var(--u)); }
+/* manifiesto: lo que el juego quiere decir, antes de jugarlo */
+.fam__manifiesto { width: calc(647 * var(--u)); margin: calc(150 * var(--u)) auto 0; }
+.fam__estrella { margin: 0 0 calc(28 * var(--u)); text-align: center; font-size: max(18px, calc(28 * var(--u))); color: var(--grey); }
+.fam__texto {
+  margin: 0;
+  font-size: max(13px, calc(20 * var(--u)));
+  line-height: 1.4;
+  letter-spacing: -0.06em;
+  text-align: left;
+}
+.fam-juego__kicker {
+  margin: 0 0 calc(14 * var(--u));
+  font-size: max(10px, calc(14 * var(--u)));
+  text-transform: uppercase; letter-spacing: .28em;
+  color: var(--grey-text);
+}
+.fam-juego { scroll-margin-top: 40px; margin-bottom: calc(140 * var(--u)) !important; }
 
 /* =========================================================
    BOTÓN VOLVER — estrella braille (como los dibujos de la portada)
@@ -904,9 +934,11 @@ figure.is-missing::after {
   .ewu .project__desc,
   .be .project__desc,
   .fam .project__desc,
-  .fam .project__desc--end { width: auto; margin: 24px 16px 0; font-size: 15px; }
+  .fam__manifiesto { width: auto; margin: 56px 16px 0; }
+  .fam__texto { font-size: 15px; }
+  .project__ficha { margin: 26px 20px 0; gap: .5em 1.4em; letter-spacing: .2em; }
   .project__head .project__desc { margin: calc(34 * var(--m)) calc(37 * var(--m)) 0 calc(48 * var(--m)); font-size: max(14px, calc(15 * var(--m))); }
-  .fam .project__desc--end { margin-bottom: 50px; }
+  .fam-juego { margin-bottom: 60px !important; }
 
   .ewu__row { grid-template-columns: 1fr; margin-top: 32px; }
   .ewu__row figure { height: auto; }

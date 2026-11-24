@@ -25,6 +25,7 @@
       <header class="project__head">
         <h1 class="project__title">FAMILIARIO</h1>
         <p class="project__desc">Juego interactivo diseñado para niñeces y adolescencias, en el marco del año temático en el museo de los DDHH: "Memoria joven: Voces de niñez y adolescencia".<br>Derecho a vivir en familia.</p>
+        <p class="project__ficha"><span class="project__tipo">juego</span><span>museo de los DDHH</span><span>físico + web</span><a href="#juego">jugar la versión web ↓</a></p>
       </header>
 
       <figure class="fam__panel"><img src="img/familiario-panel.jpg" alt="Tablero del juego Familiario"></figure>
@@ -35,8 +36,14 @@
       </div>
 
 
+      <!-- lo que el juego quiere decir, antes de jugarlo -->
+      <section class="fam__manifiesto">
+        <p class="fam__estrella" aria-hidden="true">⭒</p>
+        <p class="fam__texto">El derecho se aborda desde lo emocional y crítico. Se invita a reconocer y cuestionar sentires hacia el núcleo familiar. No hay respuestas correctas ni únicas, con esto, no se imponen definiciones ni formas específicas de cómo se ve una familia. Se valida lo diverso de ellas, representándose en emociones. ¿Qué figura elijo? ¿Qué emoción representa? ¿A quién? ¿Por qué? El juego fomenta introspección, espacio seguro, reflexión y diálogo.</p>
+      </section>
+
       <!-- ============ JUEGO: arma tu familia ============ -->
-      <section class="fam-juego" aria-labelledby="fam-juego-titulo">
+      <section class="fam-juego" id="juego" aria-labelledby="fam-juego-titulo">
         <!-- los 18 patrones (cada uno es una emoción), para "vestir" a las figuras -->
         <svg class="fam-juego__defs" width="0" height="0" aria-hidden="true" focusable="false">
           <defs>
@@ -61,6 +68,7 @@
           </defs>
         </svg>
 
+        <p class="fam-juego__kicker">versión web ⭒ juégalo aquí</p>
         <h2 class="fam-juego__titulo" id="fam-juego-titulo">ARMA TU FAMILIA</h2>
         <p class="fam-juego__intro">Elige una figura, después un patrón (cada patrón es una emoción) y toca el tablero. Arrástralas para acercarlas o alejarlas, igual que en el museo.</p>
 
@@ -83,7 +91,6 @@
         </div>
       </section>
 
-      <p class="project__desc project__desc--end">El derecho se aborda desde lo emocional y crítico. Se invita a reconocer y cuestionar sentires hacia el núcleo familiar. No hay respuestas correctas ni únicas, con esto, no se imponen definiciones ni formas específicas de cómo se ve una familia. Se valida lo diverso de ellas, representandose en emociones. ¿Qué figura elijo? ¿Qué emoción representa? ¿A quién? ¿Por qué? El juego fomenta introspección, espacio seguro, reflexión y diálogo.</p>
 
       <div class="marquee" aria-hidden="true"><div class="marquee__track" data-text="familiario"></div></div>
     </section>
