@@ -417,12 +417,16 @@ figure.is-missing::after {
    ========================================================= */
 /* ficha de cada proyecto (igual en todas): qué es, con qué se hizo y su enlace */
 .project__ficha {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: .6em 2.2em;
-  margin: calc(40 * var(--u)) auto 0;
-  font-size: max(10px, calc(14 * var(--u)));
+  /* una línea más del texto: alineada a su borde izquierdo, con lo que es y su enlace */
+  display: flex; flex-wrap: wrap; gap: .5em 2.4em;
+  margin: calc(30 * var(--u)) auto 0;
+  font-size: max(11px, calc(15 * var(--u)));
   text-transform: uppercase; letter-spacing: .28em;
-  color: var(--grey-text);
+  text-align: left;
 }
+.ewu .project__ficha { width: calc(770 * var(--u)); }
+.be .project__ficha  { width: calc(480 * var(--u)); margin-left: calc(624 * var(--u)); }
+.fam .project__ficha { width: calc(505 * var(--u)); }
 .project__tipo { color: var(--ink); }
 .project__ficha a { color: var(--ink); border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: letter-spacing .4s; }
 .project__ficha a:hover { letter-spacing: .36em; }
@@ -837,6 +841,7 @@ figure.is-missing::after {
   .be .project__desc,
   .fam .project__desc { width: min(560px, 80vw); }
   .be .project__desc { margin-left: auto; }
+  .ewu .project__ficha, .be .project__ficha, .fam .project__ficha { width: min(560px, 80vw); margin-left: auto; }
   .about__text { width: calc(500 * var(--u)); }
   .about__img--card { left: calc(270 * var(--u)); }   /* deja espacio al volver */
 }
@@ -936,7 +941,7 @@ figure.is-missing::after {
   .fam .project__desc,
   .fam__manifiesto { width: auto; margin: 56px 16px 0; }
   .fam__texto { font-size: 15px; }
-  .project__ficha { margin: 26px 20px 0; gap: .5em 1.4em; letter-spacing: .2em; }
+  .ewu .project__ficha, .be .project__ficha, .fam .project__ficha { width: auto; margin: 20px calc(37 * var(--m)) 0 calc(48 * var(--m)); gap: .5em 1.6em; letter-spacing: .22em; }
   .project__head .project__desc { margin: calc(34 * var(--m)) calc(37 * var(--m)) 0 calc(48 * var(--m)); font-size: max(14px, calc(15 * var(--m))); }
   .fam-juego { margin-bottom: 60px !important; }
 
